@@ -6,8 +6,8 @@ const App = () => {
 
   const renderProducts = productList.map(product => <Card key={product.id} product={product} />)
   return (
-    <div className="container  max-w-[70vw]  mx-auto">
-      <div className="grid min-[1290px]:grid-cols-4 grid-gap-2 md:grid-gap-4 xl:grid-cols-1 max-[600px]:grid-cols-1  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 ">
+    <div className="container mx-auto">
+      <div className="grid min-[1290px]:grid-cols-4 grid-gap-2 max- md:grid-gap-4 xl:grid-cols-1 max-[600px]:grid-cols-1  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 ">
         {renderProducts}
       </div>
     </div>
