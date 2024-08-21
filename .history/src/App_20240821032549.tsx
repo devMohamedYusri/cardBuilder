@@ -6,7 +6,7 @@ import Modal from './components/ui/modal';
 import {useState } from 'react'
 
 const App = () => {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(true)
 
     function open() {
         setIsOpen(true)
@@ -26,7 +26,7 @@ const App = () => {
         {renderProducts}
       </div>
       <Modal isOpen={isOpen} closeModel={close} title="Add Product">
-        <div className="flex items-center space-x-2">
+        <div className="flex space-y-4">
         <Button classes="bg-blue-600 h-10 hover:bg-blue-700 " width="w-full" >submit</Button>
         <Button classes="bg-black-100 h-10 hover:bg-gray-700 " width="w-full" >cancel</Button>
         </div>

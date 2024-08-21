@@ -6,7 +6,7 @@ import Modal from './components/ui/modal';
 import {useState } from 'react'
 
 const App = () => {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(true)
 
     function open() {
         setIsOpen(true)

@@ -22,11 +22,10 @@ const Card = ({product}:IProps) => {
                 <Imag imageURL={product.category.imageURL} className="w-12 h-12 rounded-full" alt={product.category.name} />
             </div>
             <div className="flex justify-between items-center space-x-2 mt-5">
-                <Button classes="bg-blue-500" >edit</Button> 
-                <Button classes="bg-red-500">delete</Button>
+                <Button classes="bg-blue-600" >edit</Button> 
+                <Button classes="bg-red-600">delete</Button>
             </div>
         </div>
-
     )
 }
 
