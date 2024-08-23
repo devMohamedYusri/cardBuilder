@@ -2,6 +2,7 @@ import { IProduct } from '../interfaces/IProduct.tsx';
 import Imag from './Image.tsx';
 import Button from './ui/Button.tsx';
 import { reduceDescription } from '../uility/Function.tsx';
+import Color from './Color.tsx';
 
 interface IProps{
     product:IProduct;
@@ -13,9 +14,7 @@ const Card = ({product}:IProps) => {
             <h3>{product.title}</h3>
             <p>{reduceDescription({txt:product.description,limit:50})}</p>
             <div className="flex items-center my-4 space-x-2">
-                <span className="w-4 h-4 bg-black rounded-full cursor-pointer" />
-                <span className="w-4 h-4 bg-black rounded-full cursor-pointer" />
-                <span className="w-4 h-4 bg-black rounded-full cursor-pointer" />
+                {product.colors.map(color=><Color key={color} color={color} />)}
             </div>
             <div className="flex  items-center justify-between">
                 <span className="font-bold to-blue-700">$99</span>

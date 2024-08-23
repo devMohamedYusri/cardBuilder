@@ -1,6 +1,6 @@
 import "./App.css";
 import Card from "./components/Card";
-import { productList, fromInput } from "./data/products";
+import { productList, fromInput, Colors } from "./data/products";
 import Button from "./components/ui/Button";
 import Modal from "./components/ui/modal";
 import { ChangeEvent, FormEvent, useState } from "react";
@@ -8,6 +8,8 @@ import Input from "./components/ui/Input";
 import { IProduct } from "./interfaces/IProduct";
 import { productValidation } from "./validation";
 import Error from "./components/Error";
+import Color from "./components/Color";
+import { v4 as uuid } from "uuid";
 
 const App = () => {
   const defaultProduct:IProduct = {
@@ -21,14 +23,16 @@ const App = () => {
       imageURL: "",
     }
 }
+
  //states
-  const [isOpen, setIsOpen] = useState(true);
+  const [products,setProducts]=useState<IProduct[]>(productList);
+  const [isOpen, setIsOpen] = useState(false);
   const [product,setProduct]=useState<IProduct>(defaultProduct);
   const [error,setError]=useState({title:"",description:"",imageURL:"",price:""});
-
- const open=()=> {
+  const [colors,setColors]=useState<string[]>([]);
+  const open = () => {
     setIsOpen(true);
-  }
+  };
 
   const close=()=> {
     setIsOpen(false);
@@ -41,29 +45,35 @@ const App = () => {
       ...product,
     [name]: value,
     });
-
-    setError({title:"",description:"",imageURL:"",price:""});
+    setError({
+      ...error,
+    [name]:""});
   }
 
   const onsubmitHandler=(e:FormEvent<HTMLFormElement>)=>{
     e.preventDefault();
     const validate=productValidation(product);
-    const hasError=Object.values(error).some((value)=>value=="") && Object.values(error).every((item)=>!item);
-    console.log(hasError);
+    const hasError = Object.values(validate).some((value) => value !== "") ;
     if(hasError){
       setError(validate);
     }else{
       setError(validate);
+      setProducts((prev)=>[{...product,id:uuid(),colors,...prev}]);
+      setProduct(defaultProduct);
+      setColors([]);
+      close();
     }
   }
 
   const onCancel=()=>{
     setProduct(defaultProduct);
+    setError({title:"",description:"",imageURL:"",price:""});
+    setColors([]);
     close();
   }
 
   // renders
-  const renderProducts = productList.map((product) => (
+  const renderProducts = products.map((product) => (
     <Card key={product.id} product={product} />
   ));
 
@@ -74,13 +84,22 @@ const App = () => {
       <Error msg={error[item.name]} />
     </div>
   );
+
+  const renderColors=Colors.map(color=><Color key={color} color={color} onClick={()=>{
+    if(colors.includes(color)){
+      setColors((prev)=>prev.filter((c)=>c!==color))
+    }else{
+      setColors((prev)=>[...prev,color])
+    }
+  }}/>)
+
   return (
     <div className="container max-w-[70vw]  mx-auto">
       <div className="flex justify-between items-center mt-20">
         <h1 className="text-center text-3xl font-bold my-10">
           Our <span className="text-blue-600">Products</span>
         </h1>
-        <Button classes="bg-blue-600 h-10 hover:bg-blue-700 text-white " width="w-fit">
+        <Button classes="bg-blue-600 h-10 hover:bg-blue-700 text-white " width="w-fit" onClick={open}>
           Add Product
         </Button>
       </div>
@@ -91,6 +110,12 @@ const App = () => {
         <form className="w-full" onSubmit={onsubmitHandler}>
           <div className="w-full">
             {renderInputList}
+            <div className="flex items-center flex-wrap my-4 space-x-2">
+            {renderColors}
+            </div>
+            <div className="flex items-center flex-wrap">
+                {colors.map(color=><span key={color} className="block w-fit h-fit rounded m-2" style={{backgroundColor:color}}>{color}</span>)}
+            </div>
           </div>
           <div className="flex items-center space-x-2 mt-4">
             <Button classes="bg-blue-600 h-10 hover:bg-blue-700 " width="w-full">

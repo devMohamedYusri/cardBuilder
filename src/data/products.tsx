@@ -45,7 +45,7 @@ export const productList: IProduct[] = [
         description: "The Porsche 911 Carrera is a timeless sports car, known for its distinctive design, exceptional performance, and luxurious interior.",
         imageURL: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wd3wxfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80",
         price: "120000",
-        colors: ["#FFFFFF", "#000000", "#FF0000"],
+        colors: ["#FF0000", "#000000", "#FF00900"],
         category: {
             name: "Sports Cars",
             imageURL: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wd3wxfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80",
@@ -60,7 +60,7 @@ export const productList: IProduct[] = [
         colors: ["#000000", "#FF0000", "#FFFFFF"],
         category: {
             name: "Muscle Cars",
-            imageURL: "https://images.unsplash.com/photo-1597009941408-0d5c3b4e0157?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wd3wxfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80",
+            imageURL: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wd3wxfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80",
         },
     },
     {
@@ -132,7 +132,7 @@ export const productList: IProduct[] = [
         colors: ["#000000", "#FFFFFF", "#FF0000"],
         category: {
             name: "SUVs",
-            imageURL: "https://images.unsplash.com/photo-1597009941408-0d5c3b4e0157?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wd3wxfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80",
+            imageURL: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wd3wxfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80",
         },
     },
     {
@@ -189,3 +189,19 @@ export const fromInput: IInput[] = [
     },
 
 ]
+
+export const Colors: string[] = [
+    "#FF5733", // Red-Orange
+    "#33FF57", // Green
+    "#3357FF", // Blue
+    "#FF33A1", // Pink
+    "#A1FF33", // Lime Green
+    "#5733FF", // Purple
+    "#33FFF0", // Cyan
+    "#FF8C33", // Orange
+    "#FF33EC", // Magenta
+    "#33FFB2", // Mint Green
+    "#8C33FF", // Violet
+    "#FFB233", // Gold
+    "#33FF70"  // Spring Green
+];
