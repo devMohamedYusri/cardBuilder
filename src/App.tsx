@@ -10,6 +10,8 @@ import { productValidation } from "./validation";
 import Error from "./components/Error";
 import Color from "./components/Color";
 import { v4 as uuid } from "uuid";
+import { Select } from "@headlessui/react";
+import Example from "./components/ui/Select";
 
 const App = () => {
   const defaultProduct:IProduct = {
@@ -116,6 +118,7 @@ const App = () => {
             <div className="flex items-center flex-wrap">
                 {colors.map(color=><span key={color} className="block w-fit h-fit rounded m-2" style={{backgroundColor:color}}>{color}</span>)}
             </div>
+            <Example/>
           </div>
           <div className="flex items-center space-x-2 mt-4">
             <Button classes="bg-blue-600 h-10 hover:bg-blue-700 " width="w-full">
