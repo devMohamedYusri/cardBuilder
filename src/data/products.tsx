@@ -209,17 +209,14 @@ export const Colors: string[] = [
 
 export const categories:ICategories[]=[
     {
-        id: uuid(),
         name: "SUVs",
         avatar: "https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wd3wxfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80",
     },
     {
-        id: uuid(),
         name: "Sedans",
         avatar: "https://images.unsplash.com/photo-1511407397940-d57f68e81203?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wd3wxfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80",
     },
     {
-        id: uuid(),
         name: "Coupes",
         avatar: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wd3wxfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80",
     },

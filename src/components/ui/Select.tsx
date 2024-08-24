@@ -36,7 +36,7 @@ export default function SelectCategory({selected,setSelected}:IProps) {
                 >
                     {categories.map((category) => (
                         <ListboxOption
-                            key={category.id}
+                            key={category.name}
                             value={category}
                             className="group relative cursor-default select-none py-2 pl-3 pr-9 text-gray-900
                                 data-[focus]:bg-indigo-600 data-[focus]:text-white"

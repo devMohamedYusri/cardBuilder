@@ -7,7 +7,7 @@ export const productValidation=(product:{title:string,description:string,imageUR
         colors:"",
     }
     const trimmedTitle=product.title.trim();
-    if(trimmedTitle.length<10 || trimmedTitle.length>100){
+    if(trimmedTitle.length<6 || trimmedTitle.length>100){
         errors.title="title must be between 10 and 100 characters";
     }
 
