@@ -7,6 +7,6 @@ export interface IProduct{
     colors:string[];
     category:{
         name:string;
-        imageURL:string;
+        avatar:string;
     }
 }

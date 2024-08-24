@@ -1,6 +1,7 @@
 import { v4 as uuid } from "uuid";
 import { IProduct } from "../interfaces/IProduct";
 import { IInput } from "../interfaces/IInput";
+import { ICategories } from "../interfaces/ICategories";
 
 export const productList: IProduct[] = [
     {
@@ -12,7 +13,7 @@ export const productList: IProduct[] = [
         colors: ["#FF0032", "#2563eb", "#FF631"],
         category: {
             name: "Cars",
-            imageURL: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wd3wxfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80",
+            avatar: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wd3wxfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80",
         },
     },
     {
@@ -24,7 +25,7 @@ export const productList: IProduct[] = [
         colors: ["#FF0032", "#2563eb", "#FF631"],
         category: {
             name: "Cars",
-            imageURL: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wd3wxfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80",
+            avatar: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wd3wxfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80",
         },
     },
     {
@@ -36,7 +37,7 @@ export const productList: IProduct[] = [
         colors: ["#FF0000", "#000000", "#FFFFFF"],
         category: {
             name: "Electric Cars",
-            imageURL: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wd3wxfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80",
+            avatar: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wd3wxfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80",
         },
     },
     {
@@ -48,7 +49,7 @@ export const productList: IProduct[] = [
         colors: ["#FF0000", "#000000", "#FF00900"],
         category: {
             name: "Sports Cars",
-            imageURL: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wd3wxfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80",
+            avatar: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wd3wxfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80",
         },
     },
     {
@@ -60,7 +61,7 @@ export const productList: IProduct[] = [
         colors: ["#000000", "#FF0000", "#FFFFFF"],
         category: {
             name: "Muscle Cars",
-            imageURL: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wd3wxfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80",
+            avatar: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wd3wxfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80",
         },
     },
     {
@@ -72,7 +73,7 @@ export const productList: IProduct[] = [
         colors: ["#FF0000", "#000000", "#FFFFFF"],
         category: {
             name: "Sports Cars",
-            imageURL: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wd3wxfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80",
+            avatar: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wd3wxfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80",
         },
     },
     {
@@ -84,7 +85,7 @@ export const productList: IProduct[] = [
         colors: ["#FF0000", "#000000", "#FFFFFF"],
         category: {
             name: "Supercars",
-            imageURL: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wd3wxfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80",
+            avatar: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wd3wxfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80",
         },
     },
     {
@@ -96,7 +97,7 @@ export const productList: IProduct[] = [
         colors: ["#FF0000", "#000000", "#FFFFFF"],
         category: {
             name: "Supercars",
-            imageURL: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wd3wxfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80",
+            avatar: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wd3wxfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80",
         },
     },
     {
@@ -108,7 +109,7 @@ export const productList: IProduct[] = [
         colors: ["#FF0000", "#000000", "#FFFFFF"],
         category: {
             name: "Supercars",
-            imageURL: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wd3wxfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80",
+            avatar: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wd3wxfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80",
         },
     },
     {
@@ -120,7 +121,7 @@ export const productList: IProduct[] = [
         colors: ["#FF0032", "#2563eb", "#FF631"],
         category: {
             name: "Cars",
-            imageURL: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wd3wxfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80",
+            avatar: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wd3wxfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80",
         },
     },
     {
@@ -132,7 +133,7 @@ export const productList: IProduct[] = [
         colors: ["#000000", "#FFFFFF", "#FF0000"],
         category: {
             name: "SUVs",
-            imageURL: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wd3wxfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80",
+            avatar: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wd3wxfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80",
         },
     },
     {
@@ -144,7 +145,7 @@ export const productList: IProduct[] = [
         colors: ["#FF0000", "#0000FF", "#00FF00"],
         category: {
             name: "Luxury SUVs",
-            imageURL: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wd3wxfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80",
+            avatar: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wd3wxfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80",
         },
     },
     {
@@ -156,13 +157,13 @@ export const productList: IProduct[] = [
         colors: ["#000000", "#FF0000", "#FFFFFF"],
         category: {
             name: "Luxury SUVs",
-            imageURL: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wd3wxfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80",
+            avatar: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wd3wxfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80",
         },
     },
 ];
 
 
-export const fromInput: IInput[] = [
+export const formInput: IInput[] = [
     {
         "id": "title",
         "name": "title",
@@ -187,8 +188,7 @@ export const fromInput: IInput[] = [
         "label": "Product Price",
         "type": "text"
     },
-
-]
+];
 
 export const Colors: string[] = [
     "#FF5733", // Red-Orange
@@ -205,3 +205,22 @@ export const Colors: string[] = [
     "#FFB233", // Gold
     "#33FF70"  // Spring Green
 ];
+
+
+export const categories:ICategories[]=[
+    {
+        id: uuid(),
+        name: "SUVs",
+        avatar: "https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wd3wxfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80",
+    },
+    {
+        id: uuid(),
+        name: "Sedans",
+        avatar: "https://images.unsplash.com/photo-1511407397940-d57f68e81203?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wd3wxfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80",
+    },
+    {
+        id: uuid(),
+        name: "Coupes",
+        avatar: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wd3wxfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80",
+    },
+]

@@ -1,9 +1,10 @@
-export const productValidation=(product:{title:string,description:string,imageURL:string,price:string})=>{
-    const errors:{title:string,description:string,imageURL:string,price:string}={
+export const productValidation=(product:{title:string,description:string,imageURL:string,price:string,colors:string[]})=>{
+    const errors:{title:string,description:string,imageURL:string,price:string ,colors:string}={
         title:"",
         description:"",
         imageURL:"",
-        price:""
+        price:"",
+        colors:"",
     }
     const trimmedTitle=product.title.trim();
     if(trimmedTitle.length<10 || trimmedTitle.length>100){
@@ -25,5 +26,9 @@ export const productValidation=(product:{title:string,description:string,imageUR
         errors.price="invalid price";
     }
 
+
+    if(product.colors.length===0){
+        errors.colors="please select at least one color";
+    }
     return errors;
 }

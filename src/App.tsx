@@ -1,6 +1,6 @@
 import "./App.css";
 import Card from "./components/Card";
-import { productList, fromInput, Colors } from "./data/products";
+import { productList, formInput, Colors, categories } from "./data/products";
 import Button from "./components/ui/Button";
 import Modal from "./components/ui/modal";
 import { ChangeEvent, FormEvent, useState } from "react";
@@ -10,8 +10,7 @@ import { productValidation } from "./validation";
 import Error from "./components/Error";
 import Color from "./components/Color";
 import { v4 as uuid } from "uuid";
-import { Select } from "@headlessui/react";
-import Example from "./components/ui/Select";
+import Select from "./components/ui/Select";
 
 const App = () => {
   const defaultProduct:IProduct = {
@@ -22,7 +21,7 @@ const App = () => {
     colors: [],
     category: {
       name: "",
-      imageURL: "",
+      avatar: "",
     }
 }
 
@@ -30,8 +29,9 @@ const App = () => {
   const [products,setProducts]=useState<IProduct[]>(productList);
   const [isOpen, setIsOpen] = useState(false);
   const [product,setProduct]=useState<IProduct>(defaultProduct);
-  const [error,setError]=useState({title:"",description:"",imageURL:"",price:""});
+  const [error,setError]=useState({title:"",description:"",imageURL:"",price:"" ,colors:""});
   const [colors,setColors]=useState<string[]>([]);
+  const [selected, setSelected] = useState(categories[1])
   const open = () => {
     setIsOpen(true);
   };
@@ -57,10 +57,14 @@ const App = () => {
     const validate=productValidation(product);
     const hasError = Object.values(validate).some((value) => value !== "") ;
     if(hasError){
-      setError(validate);
+      if(!colors.length){
+        setError({...validate,colors:"Please select at least one color"});
+      }else{
+        setError({...validate,colors:""});
+      }
     }else{
       setError(validate);
-      setProducts((prev)=>[{...product,id:uuid(),colors,...prev}]);
+      setProducts((prev)=>[{...product,id:uuid(),colors,category:selected,...prev}]);
       setProduct(defaultProduct);
       setColors([]);
       close();
@@ -69,7 +73,7 @@ const App = () => {
 
   const onCancel=()=>{
     setProduct(defaultProduct);
-    setError({title:"",description:"",imageURL:"",price:""});
+    setError({title:"",description:"",imageURL:"",price:"",colors:""});
     setColors([]);
     close();
   }
@@ -79,11 +83,11 @@ const App = () => {
     <Card key={product.id} product={product} />
   ));
 
-  const renderInputList = fromInput.map((item) =>
+  const renderInputList = formInput.map((item) =>
     <div className="flex flex-col w-full" key={item.id}>
       <label className="text-slate-200 p-2 pl-0" htmlFor={item.id}>{item.label}</label>
       <Input type={item.type} name={item.name} id={item.id} value={product[item.name]} onChange={onChangeHandler} />
-      <Error msg={error[item.name]} />
+      <Error msg={error[item.name]} onChange={onChangeHandler}/>
     </div>
   );
 
@@ -112,13 +116,14 @@ const App = () => {
         <form className="w-full" onSubmit={onsubmitHandler}>
           <div className="w-full">
             {renderInputList}
+            <Select selected={selected} setSelected={setSelected}/>
             <div className="flex items-center flex-wrap my-4 space-x-2">
             {renderColors}
             </div>
+            <Error msg={error.colors}/>
             <div className="flex items-center flex-wrap">
                 {colors.map(color=><span key={color} className="block w-fit h-fit rounded m-2" style={{backgroundColor:color}}>{color}</span>)}
             </div>
-            <Example/>
           </div>
           <div className="flex items-center space-x-2 mt-4">
             <Button classes="bg-blue-600 h-10 hover:bg-blue-700 " width="w-full">

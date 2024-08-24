@@ -1,7 +1,9 @@
-interface IPorps{
+import { HTMLAttributes } from "react"
+
+interface IProps extends HTMLAttributes<HTMLParagraphElement>{
     msg:string;
 }
-const Error = ({msg}:IPorps) => {
+const Error = ({msg}:IProps) => {
     return (msg?<p className="text-red-500 w-full font-semibold text-sm">{msg}</p>:null)
 }
 

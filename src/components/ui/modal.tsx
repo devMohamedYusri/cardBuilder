@@ -21,10 +21,6 @@ export default function Modal({isOpen,closeModel,title,children}:IProps) {
                             <DialogTitle as="h3" className="text-base/7 font-medium text-white">
                                 {title}
                             </DialogTitle>
-                            <p className="mt-2 text-sm/6 text-white/50">
-                                Your payment has been successfully submitted. We’ve sent you an email with all of the details of your
-                                order.
-                            </p>
                             <div className="mt-4">
                                 {children}
                             </div>
