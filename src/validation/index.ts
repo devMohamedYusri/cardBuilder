@@ -15,7 +15,7 @@ export const productValidation=(product:{title:string,description:string,imageUR
     if(trimmedDesc.length<10 || trimmedDesc.length>900){
         errors.description="description must be between 10 and 900 characters";
     }
-    const imageUrlPattern = /^(https?:\/\/.*\.(?:png|jpg|jpeg|gif|webp|bmp|svg))$/i;
+    const imageUrlPattern = /^(https?:\/\/(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,})(?:\/[^\s]*)?(\?.*)?$/i;
 
     if(!imageUrlPattern.test(product.imageURL)){
         errors.imageURL="invalid image url";

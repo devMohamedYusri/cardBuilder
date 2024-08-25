@@ -5,7 +5,7 @@ import {categories} from "../../data/products"
 import { ICategories } from '../../interfaces/ICategories';
 
 interface IProps{
-    selected:ICategories,
+    selected:{name:string,avatar:string},
     setSelected:(category:ICategories)=>void
 }
 

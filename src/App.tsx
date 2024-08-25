@@ -31,7 +31,7 @@ const App = () => {
   const [product, setProduct] = useState<IProduct>(defaultProduct);
   const [error, setError] = useState({ title: "", description: "", imageURL: "", price: "", colors: "" });
   const [colors, setColors] = useState<string[]>([]);
-  const [selected, setSelected] = useState(categories[1]);
+  const [selected, setSelected] = useState(categories[0]);
   const [ProductToEdit, setProductToEdit] = useState<IProduct>(defaultProduct);
   const [isOpenEdit, setIsOpenEdit] = useState(false);
   const [index, setIndex] = useState(0);
@@ -40,17 +40,20 @@ const App = () => {
   };
 
   const close = () => {
+    setError({ title: "", description: "", imageURL: "", price: "", colors: "" });
     setIsOpen(false);
   }
 
   const openEdit = () => {
+    setColors(ProductToEdit.colors || []);
     setIsOpenEdit(true);
   };
 
   const closeEdit = () => {
+    setColors([]);
+    setError({ title: "", description: "", imageURL: "", price: "", colors: "" });
     setIsOpenEdit(false);
-  }
-
+  };  
 
 
   const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
@@ -80,17 +83,18 @@ const App = () => {
 
   const onsubmitHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    product.colors=colors;
     const validate = productValidation(product);
     const hasError = Object.values(validate).some((value) => value !== "");
     if (hasError) {
-      if (!colors.length) {
+      if (colors.length===0) {
         setError({ ...validate, colors: "Please select at least one color" });
       } else {
         setError({ ...validate, colors: "" });
       }
     } else {
       setError(validate);
-      setProducts((prev) => [{ ...product, id: uuid(), colors, category: selected, ...prev }]);
+      setProducts((prev) =>  [{ ...product, id: uuid(), category: selected }, ...prev]);
       setProduct(defaultProduct);
       setColors([]);
       close();
@@ -100,11 +104,9 @@ const App = () => {
   const onsubmitEditHandler = (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
       const validate = productValidation(ProductToEdit);
-      console.log(ProductToEdit);
       const hasError = Object.values(validate).some((value) => value !== "");
       if (hasError) {
         if (!ProductToEdit.colors.length) {
-          console.log(ProductToEdit.colors)
           setError({ ...validate, colors: "Please select at least one color" });
         } else {
           setError({ ...validate, colors: "" });
@@ -112,7 +114,7 @@ const App = () => {
       } else {
         setError(validate);
         const updatedProducts = [...products];
-        updatedProducts[index] = ProductToEdit;
+        updatedProducts[index] = {...ProductToEdit,colors, category: selected};
         setProducts(updatedProducts);
         closeEdit();
       }
@@ -122,10 +124,12 @@ const App = () => {
     setError({ title: "", description: "", imageURL: "", price: "", colors: "" });
     setColors([]);
     close();
-  }
-
+  };
+  
   const onCancelToEdit=()=>{
+    setProductToEdit(defaultProduct);
     setError({ title: "", description: "", imageURL: "", price: "", colors: "" });
+    setColors([]);
     closeEdit();
   }
 
@@ -136,7 +140,7 @@ const App = () => {
 
   const renderInputList = formInput.map((item) =>
     <div className="flex flex-col w-full" key={item.id}>
-      <label className="text-slate-200 p-2 pl-0" htmlFor={item.id}>{item.label}</label>
+      <label className="text-black p-2 pl-0" htmlFor={item.id}>{item.label}</label>
       <Input type={item.type} name={item.name} id={item.id} value={product[item.name]} onChange={onChangeHandler} />
       <Error msg={error[item.name]} onChange={onChangeHandler} />
     </div>
@@ -148,20 +152,11 @@ const App = () => {
     } else {
       setColors((prev) => [...prev, color])
     }
-  }} />)
-
-  
-  const renderTOEditColors = Colors.concat(ProductToEdit.colors).map(color => <Color key={color} color={color} onClick={() => {
-    if (colors.concat(ProductToEdit.colors).includes(color)) {
-      setColors((prev) => prev.filter((c) => c !== color))
-    } else {
-      setColors((prev) => [...prev, color])
-    }
-  }} />)
+  }} />);
 
   const renderInputsProductToEdit = formInput.map((input) => 
     <div className="flex flex-col w-full" key={input.id}>
-      <label className="text-slate-200 p-2 pl-0" htmlFor={input.id}>{input.label}</label>
+      <label className="text-stone-700 pt-2 pl-0" htmlFor={input.id}>{input.label}</label>
       <Input type={input.type} name={input.name} id={input.id} value={ProductToEdit[input.name]} onChange={onChangeToEditHandler} />
       <Error msg={error[input.name]} onChange={onChangeToEditHandler} />
     </div>
@@ -209,13 +204,13 @@ const App = () => {
         <form className="w-full" onSubmit={onsubmitEditHandler}>
           <div className="w-full">
             {renderInputsProductToEdit}
-            <Select selected={ProductToEdit.category} setSelected={setSelected} />
+            <Select selected={ProductToEdit.category} setSelected={(value) => setProductToEdit({...ProductToEdit,category:value})} />
             <div className="flex items-center flex-wrap my-4 space-x-2">
-              {renderTOEditColors}
+              {renderColors}
             </div>
             <Error msg={error.colors} />
             <div className="flex items-center flex-wrap">
-              {ProductToEdit.colors.map(color => <span key={color} className="block w-fit h-fit rounded m-2" style={{ backgroundColor: color }}>{color}</span>)}
+              {colors.map(color => <span key={color} className="block w-fit h-fit rounded m-2" style={{ backgroundColor: color }}>{color}</span>)}
             </div>
           </div>
           <div className="flex items-center space-x-2 mt-4">
